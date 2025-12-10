@@ -1,0 +1,39 @@
+<div class="translate-control" (click)="$event.stopPropagation()">
+  <button
+    type="button"
+    class="icon-btn translate-trigger"
+    aria-haspopup="listbox"
+    [attr.aria-expanded]="menuOpen()"
+    aria-controls="language-menu"
+    [attr.aria-label]="'Translate site. Current language ' + activeCode()"
+    (click)="toggleMenu($event)"
+    (keydown)="onTriggerKeydown($event)"
+  >
+    <svg class="icon-translate" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M11 5h10M11 12h6m-15-1.5c2.5-1.5 4-3.5 5-6 1 2.5 2.5 4.5 5 6m-5-2 6 10"></path>
+    </svg>
+  </button>
+
+  <ul
+    *ngIf="menuOpen()"
+    id="language-menu"
+    class="translate-menu"
+    role="listbox"
+    [attr.aria-activedescendant]="'lang-option-' + focusedIndex()"
+    tabindex="-1"
+    (keydown)="onMenuKeydown($event)"
+  >
+    <li *ngFor="let language of languages; let idx = index" role="option" [attr.id]="'lang-option-' + idx">
+      <button
+        #optionButton
+        type="button"
+        class="translate-menu__option"
+        [attr.aria-selected]="language.code === activeCode()"
+        (click)="selectLanguage(language.code)"
+      >
+        <span class="lang-code notranslate" translate="no">{{ language.code }}</span>
+        <span class="lang-label">{{ language.label }}</span>
+      </button>
+    </li>
+  </ul>
+</div>
