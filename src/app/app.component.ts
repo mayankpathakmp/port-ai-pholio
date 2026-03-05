@@ -90,6 +90,13 @@ interface ParticleSpec {
   drift: number;
 }
 
+interface GitHubRepo {
+  name: string;
+  description: string;
+  language: string;
+  stars: number;
+}
+
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -106,7 +113,10 @@ export class AppComponent implements OnDestroy {
   readonly navLinks: NavLink[] = [
     { label: 'Projects', href: '#projects' },
     { label: 'Experience', href: '#experience' },
-    { label: 'Skills', href: '#skills' }
+    { label: 'Skills', href: '#skills' },
+    { label: 'Labs', href: '#labs' },
+    { label: 'Credentials', href: '#articles' },
+    { label: 'GitHub', href: '#github' }
   ];
 
   readonly particles: ParticleSpec[] = this.generateParticles(48);
@@ -116,7 +126,7 @@ export class AppComponent implements OnDestroy {
     title: 'Software Engineer · Angular + AI Automation',
     summary:
       'Designing Angular experiences where AI copilots accelerate delivery, underwriting flows feel cinematic, and developer productivity is measurable.',
-    availability: 'Accepting Angular + AI collabs Q1 2026',
+    availability: 'Accepting Angular + AI collabs Q2 2026',
     location: 'Bengaluru · India',
     ethos: 'Engineering luminous software with storytelling UX, data clarity, and automation stitched together.',
     tags: ['Agentic Angular stacks', 'LLM dev tooling', 'Insurance intelligence', 'Experience ops']
@@ -175,7 +185,27 @@ export class AppComponent implements OnDestroy {
       status: 'Open source · 2025',
       impact: 'Made quantum computing experiments accessible for students and hobbyists.',
       cta: 'Launch demo',
-      link: 'https://github.com/mayankpathak10299'
+      link: 'https://github.com/mayankpathakmp'
+    },
+    {
+      title: 'PIVC Identity Verification Engine',
+      description:
+        'AI-driven proposal verification module integrating real-time face detection, audio-mismatch analysis, and document intelligence for life insurance onboarding.',
+      stack: ['Angular', 'TypeScript', 'Python', 'AI/ML', 'REST APIs'],
+      status: 'GoDigit Life · 2023–2024',
+      impact: 'Strengthened fraud detection and reduced manual identity checks by 60%.',
+      cta: 'View architecture',
+      link: '#contact'
+    },
+    {
+      title: 'Portfolio — port-ai-pholio',
+      description:
+        'This very site — a high-craft Angular 17 portfolio with SSR, Google Translate integration, dark/light theming, particle effects, and fully responsive design.',
+      stack: ['Angular 17', 'TypeScript', 'SCSS', 'SSR', 'Google Translate API'],
+      status: 'Open source · 2025',
+      impact: 'Showcases modern Angular architecture with signal-based state and standalone components.',
+      cta: 'View source',
+      link: 'https://github.com/mayankpathakmp/port-ai-pholio'
     }
   ];
 
@@ -208,22 +238,27 @@ export class AppComponent implements OnDestroy {
     {
       title: 'Languages & Paradigms',
       depth: 'Core stack',
-      items: ['Java', 'Python', 'JavaScript', 'TypeScript', 'Object-oriented design']
+      items: ['Java', 'Python', 'JavaScript', 'TypeScript', 'SQL', 'Object-oriented design']
     },
     {
       title: 'Frontend Systems',
       depth: 'Frameworks & UX',
-      items: ['Angular architecture', 'React interfaces', 'HTML/CSS/Sass', 'Responsive design systems']
+      items: ['Angular 17 (signals, standalone)', 'React', 'HTML/CSS/Sass', 'Responsive design systems', 'SSR & hydration']
     },
     {
       title: 'Automation & Intelligence',
       depth: 'AI-driven delivery',
-      items: ['LLM + agent design', 'Camunda orchestration', 'Underwriting automation', 'Data visualization']
+      items: ['LLM + agent design', 'Camunda orchestration', 'Underwriting automation', 'Data visualization', 'AI face/voice detection']
+    },
+    {
+      title: 'Backend & APIs',
+      depth: 'Server & data',
+      items: ['Node.js & Express', 'FastAPI (Python)', 'REST API design', 'PostgreSQL & DBeaver']
     },
     {
       title: 'Tools & Operations',
       depth: 'Collaboration & ops',
-      items: ['Git & GitHub', 'Docker & DBeaver', 'Postman & API testing', 'Agile rituals']
+      items: ['Git & GitHub', 'Docker', 'Postman & API testing', 'Agile / Scrum rituals', 'CI/CD pipelines']
     }
   ];
 
@@ -266,6 +301,12 @@ export class AppComponent implements OnDestroy {
       summary: 'Completed Johns Hopkins course focused on modern responsive web foundations.',
       link: 'https://www.coursera.org/learn/html-css-javascript-for-web-developers',
       readTime: 'Issued 2020'
+    },
+    {
+      title: 'B.Tech in Computer Science & Engineering',
+      summary: 'Undergraduate degree providing strong foundations in algorithms, data structures, databases, and software engineering.',
+      link: '#',
+      readTime: 'Graduated 2023'
     }
   ];
 
@@ -290,13 +331,31 @@ export class AppComponent implements OnDestroy {
     },
     {
       label: 'GitHub',
-      value: 'github.com/mayankpathak10299',
+      value: 'github.com/mayankpathakmp',
       hint: 'Projects, experiments, and open source',
-      link: 'https://github.com/mayankpathak10299'
+      link: 'https://github.com/mayankpathakmp'
     }
   ];
 
   theme = signal<Theme>('dark');
+  readonly showGithubReview = signal(false);
+
+  readonly githubProfile = {
+    username: 'mayankpathakmp',
+    bio: 'SE @ Digit Life Insurance · Frontend Developer (Angular) · 5★ HackerRank · Open Source Enthusiast',
+    avatar: 'https://avatars.githubusercontent.com/u/65023603?v=4',
+    totalRepos: 42,
+    followers: 28,
+    following: 37,
+    repos: [
+      { name: 'jarvis', description: 'J.A.R.V.I.S. — AI assistant inspired by Iron Man, powered by Ollama. Local AI, wake word, voice I/O, Iron Man UI.', language: 'HTML', stars: 0 },
+      { name: 'openclaw', description: 'Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞', language: 'TypeScript', stars: 0 },
+      { name: 'port-ai-pholio', description: 'Modern Angular 17 portfolio with SSR, AI-driven narrative, interactive UI, and Google Translate integration.', language: 'TypeScript', stars: 0 },
+      { name: 'eduscroll-app', description: 'Educational scrolling app built with TypeScript for interactive learning experiences.', language: 'TypeScript', stars: 1 },
+      { name: 'Mvp-Spotify', description: 'Spotify clone inspired from JS Mastery course with music playback and search.', language: 'JavaScript', stars: 1 },
+      { name: 'chat-bot', description: 'Simple command line chatbot application with interactive prompts.', language: 'Python', stars: 0 }
+    ] as GitHubRepo[]
+  };
 
   private readonly baselineExperience = new Date('2023-06-01');
 
@@ -372,7 +431,8 @@ export class AppComponent implements OnDestroy {
 
   trackByLabel = (_: number, item: { label: string }) => item.label;
   trackByTitle = (_: number, item: { title: string }) => item.title;
-  trackByCompany = (_: number, item: Experience) => item.company;
+  trackByName = (_: number, item: { name: string }) => item.name;
+  trackByCompany = (_: number, item: Experience) => `${item.company}-${item.period}`;
   trackByParticle = (_: number, item: ParticleSpec) => item.id;
 
   private restoreLanguagePreference(): void {

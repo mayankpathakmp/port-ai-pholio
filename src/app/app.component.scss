@@ -1090,3 +1090,232 @@ form {
 		animation: none;
 	}
 }
+
+// ── GitHub section ──────────────────────────────────────
+
+.github-section {
+	background: var(--surface-page);
+	border-radius: var(--radius-xl);
+	padding: clamp(1.8rem, 3vw, 2.5rem);
+	border: 1px solid var(--stroke-subtle);
+	box-shadow: 0 20px 55px rgba(5, 6, 10, 0.32);
+
+	&__content {
+		display: grid;
+		grid-template-columns: 280px 1fr;
+		gap: 2rem;
+		align-items: start;
+	}
+
+	&__profile {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.75rem;
+		text-align: center;
+		padding: 1.5rem 1rem;
+		border-radius: var(--radius-lg);
+		background: var(--surface-glass);
+		border: 1px solid var(--stroke-subtle);
+		backdrop-filter: blur(14px);
+	}
+
+	&__avatar {
+		width: 80px;
+		height: 80px;
+		border-radius: 50%;
+		border: 3px solid rgba(255, 255, 255, 0.12);
+		object-fit: cover;
+		box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+	}
+
+	&__name {
+		font-weight: 700;
+		font-size: 1.1rem;
+		color: var(--text-primary);
+		margin: 0;
+	}
+
+	&__bio {
+		font-size: 0.82rem;
+		color: var(--text-muted);
+		margin: 0;
+		line-height: 1.45;
+	}
+
+	&__cta {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.45rem;
+		margin-top: 0.25rem;
+		font-size: 0.85rem;
+		padding: 0.6rem 1.2rem;
+	}
+
+	&__gh-icon {
+		width: 18px;
+		height: 18px;
+	}
+
+	&__stats {
+		display: flex;
+		gap: 1.2rem;
+		justify-content: center;
+		padding: 0.5rem 0;
+	}
+
+	&__repos {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+		gap: 1rem;
+	}
+}
+
+.repo-card {
+	border-radius: var(--radius-lg);
+	padding: 1.3rem 1.4rem;
+	border: 1px solid var(--stroke-subtle);
+	background: var(--surface-glass);
+	backdrop-filter: blur(14px);
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	transition: transform 0.3s ease, border-color 0.3s ease;
+
+	&:hover {
+		transform: translateY(-5px);
+		border-color: rgba(255, 255, 255, 0.18);
+	}
+}
+
+.repo__top {
+	display: flex;
+	align-items: center;
+	gap: 0.4rem;
+}
+
+.repo__icon {
+	width: 15px;
+	height: 15px;
+	color: var(--text-soft);
+	flex-shrink: 0;
+}
+
+.repo__name {
+	font-weight: 600;
+	font-size: 0.92rem;
+	color: var(--accent);
+	transition: color 0.2s ease;
+
+	&:hover {
+		color: var(--accent-strong);
+	}
+}
+
+.repo__desc {
+	font-size: 0.82rem;
+	color: var(--text-muted);
+	line-height: 1.5;
+	margin: 0;
+}
+
+.repo__meta {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	margin-top: 0.3rem;
+	font-size: 0.75rem;
+}
+
+.repo__lang {
+	display: flex;
+	align-items: center;
+	gap: 0.3rem;
+	color: var(--text-soft);
+
+	&::before {
+		content: '';
+		width: 10px;
+		height: 10px;
+		border-radius: 50%;
+		background: #6e7681;
+	}
+
+	&.lang--typescript::before {
+		background: #3178c6;
+	}
+
+	&.lang--python::before {
+		background: #3572a5;
+	}
+
+	&.lang--javascript::before {
+		background: #f1e05a;
+	}
+
+	&.lang--html::before {
+		background: #e34c26;
+	}
+
+	&.lang--go::before {
+		background: #00add8;
+	}
+
+	&.lang--jupyter-notebook::before {
+		background: #da5b0b;
+	}
+
+	&.lang--css::before {
+		background: #563d7c;
+	}
+
+	&.lang--java::before {
+		background: #b07219;
+	}
+
+	&.lang--dart::before {
+		background: #00b4ab;
+	}
+}
+
+.repo__stars {
+	color: var(--text-soft);
+}
+
+.github-stat {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.15rem;
+
+	&__value {
+		font-size: 1.15rem;
+		font-weight: 700;
+		color: var(--text-primary);
+	}
+
+	&__label {
+		font-size: 0.7rem;
+		text-transform: uppercase;
+		letter-spacing: 0.12em;
+		color: var(--text-soft);
+	}
+}
+
+@media (max-width: 700px) {
+	.github-section__content {
+		grid-template-columns: 1fr;
+	}
+
+	.github-section__profile {
+		flex-direction: row;
+		text-align: left;
+		align-items: center;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+
+	.github-section__repos {
+		grid-template-columns: 1fr;
+	}
+}
