@@ -97,6 +97,22 @@ interface GitHubRepo {
   stars: number;
 }
 
+interface LinkedInHighlight {
+  icon: string;
+  title: string;
+  detail: string;
+}
+
+interface LinkedInProfile {
+  name: string;
+  headline: string;
+  avatar: string;
+  profileUrl: string;
+  connections: string;
+  experience: string;
+  highlights: LinkedInHighlight[];
+}
+
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -116,7 +132,8 @@ export class AppComponent implements OnDestroy {
     { label: 'Skills', href: '#skills' },
     { label: 'Labs', href: '#labs' },
     { label: 'Credentials', href: '#articles' },
-    { label: 'GitHub', href: '#github' }
+    { label: 'GitHub', href: '#github' },
+    { label: 'LinkedIn', href: '#linkedin' }
   ];
 
   readonly particles: ParticleSpec[] = this.generateParticles(48);
@@ -313,32 +330,45 @@ export class AppComponent implements OnDestroy {
   readonly contactChannels: ContactChannel[] = [
     {
       label: 'Email',
-      value: 'mayankpathakmvp@gmail.com',
+      value: 'mayank*****mp@gmail.com',
       hint: 'Best for Angular + AI engagements',
       link: 'mailto:mayankpathakmvp@gmail.com'
     },
     {
       label: 'Phone',
-      value: '+91 70521 10998',
+      value: '+91 7052* ***98',
       hint: 'Available 10:00–19:00 IST',
       link: 'tel:+917052110998'
-    },
-    {
-      label: 'LinkedIn',
-      value: 'linkedin.com/in/mayankpathakmp',
-      hint: 'Signals, writing, and hiring',
-      link: 'https://www.linkedin.com/in/mayankpathakmp'
-    },
-    {
-      label: 'GitHub',
-      value: 'github.com/mayankpathakmp',
-      hint: 'Projects, experiments, and open source',
-      link: 'https://github.com/mayankpathakmp'
     }
   ];
 
   theme = signal<Theme>('dark');
   readonly showGithubReview = signal(false);
+
+  // Captcha gate for contact section
+  readonly captchaVerified = signal(false);
+  readonly captchaA = signal(0);
+  readonly captchaB = signal(0);
+  captchaInput = '';
+  captchaError = signal(false);
+
+  generateCaptcha(): void {
+    this.captchaA.set(Math.floor(Math.random() * 20) + 1);
+    this.captchaB.set(Math.floor(Math.random() * 20) + 1);
+    this.captchaInput = '';
+    this.captchaError.set(false);
+  }
+
+  verifyCaptcha(): void {
+    const answer = parseInt(this.captchaInput, 10);
+    if (answer === this.captchaA() + this.captchaB()) {
+      this.captchaVerified.set(true);
+      this.captchaError.set(false);
+    } else {
+      this.captchaError.set(true);
+      this.generateCaptcha();
+    }
+  }
 
   readonly githubProfile = {
     username: 'mayankpathakmp',
@@ -357,12 +387,30 @@ export class AppComponent implements OnDestroy {
     ] as GitHubRepo[]
   };
 
+  readonly linkedinProfile: LinkedInProfile = {
+    name: 'Mayank Pathak',
+    headline: 'Software Engineer @ GoDigit · Angular · AI Automation · Insurance Intelligence',
+    avatar: 'https://avatars.githubusercontent.com/u/65023603?v=4',
+    profileUrl: 'https://www.linkedin.com/in/mayankpathakmp',
+    connections: '500+',
+    experience: '2.5+ years',
+    highlights: [
+      { icon: '💼', title: 'Software Engineer @ GoDigit', detail: 'Building Angular platforms for life insurance, automating underwriting flows, and developing AI-powered developer tooling.' },
+      { icon: '🎓', title: 'B.Tech — Computer Science', detail: 'Strong foundation in data structures, algorithms, and software engineering principles.' },
+      { icon: '⚡', title: 'Angular + AI Automation', detail: 'Specializing in agentic dev workflows, LLM-powered code generation, and full-stack insurance intelligence.' },
+      { icon: '🏆', title: '5★ HackerRank · Open Source', detail: 'Active contributor with 42 public repositories spanning AI assistants, web apps, and developer tools.' },
+      { icon: '🔧', title: 'Full-Stack Capabilities', detail: 'TypeScript, Angular, Node.js, Python, SQL, REST APIs, SSR, CI/CD, and cloud deployments.' },
+      { icon: '📍', title: 'Bengaluru, India', detail: 'Available for Angular builds, automation workshops, and underwriting intelligence collaborations.' }
+    ]
+  };
+
   private readonly baselineExperience = new Date('2023-06-01');
 
   readonly experienceYears = computed(() => {
     const ms = Date.now() - this.baselineExperience.getTime();
-    const years = Math.floor(ms / (1000 * 60 * 60 * 24 * 365));
-    return Math.max(1, years);
+    const years = ms / (1000 * 60 * 60 * 24 * 365);
+    const half = Math.floor(years * 2) / 2; // round down to nearest 0.5
+    return Math.max(1, half);
   });
 
   contactModel: ContactModel = {
@@ -385,6 +433,7 @@ export class AppComponent implements OnDestroy {
       }, 3500);
       this.restoreLanguagePreference();
       this.observeTranslateTargets();
+      this.generateCaptcha();
     }
   }
 
