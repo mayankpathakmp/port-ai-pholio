@@ -1,5 +1,12 @@
 # Mayank Pathak · Portfolio
 
+[![CI](https://github.com/mayankpathakmp/port-ai-pholio/actions/workflows/ci.yml/badge.svg)](https://github.com/mayankpathakmp/port-ai-pholio/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Angular](https://img.shields.io/badge/Angular-17-DD0031?logo=angular)](https://angular.io/)
+[![Node](https://img.shields.io/badge/Node-18%2B-339933?logo=node.js)](https://nodejs.org/)
+
+> **Topics:** `angular`, `portfolio`, `ssr`, `typescript`, `angular-universal`, `scss`, `web-development`
+
 An Angular 17 + SSR experience crafted to showcase Mayank Pathak—an AI-driven Angular developer. The site blends data-rich storytelling, interactive grids, and a contact workflow powered by Angular signals and theming.
 
 ## Highlights
@@ -50,3 +57,10 @@ An Angular 17 + SSR experience crafted to showcase Mayank Pathak—an AI-driven 
 ## Deployment Notes
 - Target Node 18+ (current tooling was generated with Angular CLI 17).
 - Run `npm run build` before deploying to ensure the `dist/portfolio` directory contains both browser and server bundles.
+- A [Dockerfile](Dockerfile) is included for containerized deployments.
+
+## Contributing
+See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+
+## License
+This project is licensed under the [MIT License](LICENSE).
