@@ -223,6 +223,16 @@ export class AppComponent implements OnDestroy {
       impact: 'Showcases modern Angular architecture with signal-based state and standalone components.',
       cta: 'View source',
       link: 'https://github.com/mayankpathakmp/port-ai-pholio'
+    },
+    {
+      title: 'SnapAudit — AI Code Audit Dashboard',
+      description:
+        'Web app that audits any GitHub repo instantly — fetches metadata, analyzes structure, and generates quality scores across maintainability, security, architecture, and more.',
+      stack: ['Angular 17', 'TypeScript', 'Chart.js', 'GitHub REST API'],
+      status: 'Open source · 2026',
+      impact: 'Delivers actionable code audit reports with score rings, radar charts, and improvement suggestions.',
+      cta: 'Try it live',
+      link: 'https://github.com/mayankpathakmp/snap-audit'
     }
   ];
 
@@ -383,7 +393,8 @@ export class AppComponent implements OnDestroy {
       { name: 'port-ai-pholio', description: 'Modern Angular 17 portfolio with SSR, AI-driven narrative, interactive UI, and Google Translate integration.', language: 'TypeScript', stars: 0 },
       { name: 'eduscroll-app', description: 'Educational scrolling app built with TypeScript for interactive learning experiences.', language: 'TypeScript', stars: 1 },
       { name: 'Mvp-Spotify', description: 'Spotify clone inspired from JS Mastery course with music playback and search.', language: 'JavaScript', stars: 1 },
-      { name: 'chat-bot', description: 'Simple command line chatbot application with interactive prompts.', language: 'Python', stars: 0 }
+      { name: 'chat-bot', description: 'Simple command line chatbot application with interactive prompts.', language: 'Python', stars: 0 },
+      { name: 'snap-audit', description: 'AI-powered code audit dashboard — audit any GitHub repo instantly with quality scores, charts, and actionable suggestions.', language: 'TypeScript', stars: 0 }
     ] as GitHubRepo[]
   };
 
