@@ -233,6 +233,16 @@ export class AppComponent implements OnDestroy {
       impact: 'Delivers actionable code audit reports with score rings, radar charts, and improvement suggestions.',
       cta: 'Try it live',
       link: 'https://github.com/mayankpathakmp/snap-audit'
+    },
+    {
+      title: 'AI Resume Analyzer',
+      description:
+        'Full-stack AI tool that parses resumes (PDF/DOCX/TXT), extracts skills via NLP, scores across 5 dimensions, and matches against job descriptions using TF-IDF cosine similarity.',
+      stack: ['Next.js', 'TypeScript', 'FastAPI', 'Python', 'scikit-learn', 'Tailwind CSS'],
+      status: 'Open source · 2026',
+      impact: 'Generates actionable improvement suggestions and keyword gap analysis for job seekers.',
+      cta: 'View on GitHub',
+      link: 'https://github.com/mayankpathakmp/resume-analyzer'
     }
   ];
 
